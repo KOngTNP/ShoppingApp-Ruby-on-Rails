@@ -3,6 +3,6 @@ h1.jumbotron #{ @product.name.capitalize }
   .card
     .card-body
       p = @product.description
-      p <small> SGD </small> #{ @product.price }
+      p <small> Price </small> #{ @product.price } <small> Baht </small>
     .card-footer
       = link_to 'Back to Product List', products_path

@@ -4,6 +4,7 @@ class Admin::ProductsController < ApplicationController
 
   def index
     @products = Product.all
+
   end
 
   def new
@@ -52,10 +53,29 @@ class Admin::ProductsController < ApplicationController
     redirect_to admin_products_path
   end
 
-  private
-
-    def product_params
-      params.require(:product).permit(:name, :description, :price)
+  def csv_upload
+    data = params[:csv_file].read.split("\n")
+    data.each do |line| 
+      attribute = line.split(",").map(&:strip)
+      Product.create title: attribute[0], description: attribute[1], stock: attribute[2]
     end
+    redirect_to action: :index
+  end 
+
+  private
+    def set_product
+      @product = Product.find(params[:id])
+    end
+
+    def generate_csv(products)
+      products.map { |p| [p.title, p.description, p.created_at].join(',') }.join("\n")
+    end
+    
+  
+    def product_params
+      pp = params.require(:product).permit(:name, :description, :price)
+      pp[:status] = params[:product][:status].to_i
+      return pp
+ end
 
 end

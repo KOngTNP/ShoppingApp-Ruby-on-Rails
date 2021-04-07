@@ -1,6 +1,11 @@
 h1.jumbotron Admin | Products
 
 .container
+  .d-flex.align-items-center.justify-content-between
+  h1.tablename.justify-content-start
+    | Products 
+  = link_to 'Download CSV', products_path(format: :csv), class: "btn btn-secondary justify-content-end"
+
   .row
     = link_to 'Add Product', new_admin_product_path
     .col-12.card
@@ -9,5 +14,14 @@ h1.jumbotron Admin | Products
           th Name
           th Description
           th Price
+          th Status
         tbody
         = render partial: "admin_product", collection: @products
+
+  .d-flex.align-items-center.justify-content-between
+  th Or you can upload CSV file
+  = form_tag admin_products_path, multipart: true do
+    div
+      = file_field_tag :csv_file
+    div
+      = submit_tag :upload

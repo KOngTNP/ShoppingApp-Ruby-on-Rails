@@ -15,5 +15,8 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
 
   end
-
+  namespace :products do
+    post 'csv_upload'
+  end
+  
 end

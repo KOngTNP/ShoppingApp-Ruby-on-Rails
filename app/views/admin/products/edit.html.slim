@@ -5,7 +5,8 @@ h1.jumbotron Edit Product
     = f.input :name
     = f.input :description
     = f.input :price
-
+    = f.input :status
+    
     = f.association :categories, collection: Category.all, as: :check_boxes, include_hidden: false
 
     = f.button :submit
