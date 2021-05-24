@@ -1,0 +1,12 @@
+//= require application.js
+
+h1.jumbotron Checkout
+= include_gon
+.container 
+  = form_tag transactions_path do
+    p Please enter your address details:
+    input (name="address" type="address" required)
+    #dropin
+    = submit_tag "Pay $ #{current_user.cart_total_price}"
+br
+br

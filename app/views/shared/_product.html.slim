@@ -1,8 +1,11 @@
 .card
   .card-body
+    /  = image_tag product.image.thumb, alt: product.name
     .card-title
       p #{ product.name }
     .card-text
       p <small> Price </small> #{ product.price } <small> Baht </small>
+    .card-image
+      image src = "#{(product.image)}"
     .card-footer
       = link_to 'View Product', product_path(product)

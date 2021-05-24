@@ -56,8 +56,13 @@ gem 'devise'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem "redis", ">= 3.2.0"
 gem 'jquery-rails'
-gem 'braintree', '~> 2.33.1'
+gem "braintree", "~> 3.4.0"
 gem 'gon', '~> 6.2.0'
+gem "devise"
+gem 'carrierwave', '~> 0.10.0'
+gem 'mini_magick', '~> 4.3'
+gem 'coffee-rails', '~> 5.0.0'
+
 
 group :production do
   gem 'pg'

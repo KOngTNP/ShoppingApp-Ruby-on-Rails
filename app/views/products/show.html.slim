@@ -3,6 +3,8 @@ h1.jumbotron #{ @product.name.capitalize }
   .card
     .card-body
       p = @product.description
+      p = image_tag @product.image.url, class: 'main-img'
       p <small> Price </small> #{ @product.price } <small> Baht </small>
+      = link_to 'Add to Cart', add_to_cart_path(@product), method: :put
     .card-footer
       = link_to 'Back to Product List', products_path

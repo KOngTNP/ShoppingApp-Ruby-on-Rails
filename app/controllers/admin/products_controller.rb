@@ -62,6 +62,11 @@ class Admin::ProductsController < ApplicationController
     redirect_to action: :index
   end 
 
+  def delete_upload
+    Product.image.destroy(params[:id])
+  end
+
+
   private
     def set_product
       @product = Product.find(params[:id])
@@ -73,7 +78,7 @@ class Admin::ProductsController < ApplicationController
     
   
     def product_params
-      pp = params.require(:product).permit(:name, :description, :price)
+      pp = params.require(:product).permit(:name, :description, :price, :image)
       pp[:status] = params[:product][:status].to_i
       return pp
  end
